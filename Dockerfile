@@ -1,10 +1,15 @@
-FROM python:3.12-slim-buster
+FROM python:3.9-slim  
+# Set the working directory  
+WORKDIR /app  
 
-WORKDIR /usr/src/app
+# Copy application files  
+COPY . /app  
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Install dependencies  
+RUN pip install -r requirements.txt  
 
-COPY . .
+# Expose the application port  
+EXPOSE 5000  
 
+# Run the app  
 CMD ["python", "app.py"]
